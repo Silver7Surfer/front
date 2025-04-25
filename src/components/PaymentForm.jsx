@@ -3,7 +3,7 @@ import * as btcpayService from '../../services/btcpayService';
 import { BitcoinIcon, LightningIcon } from './Icons.jsx'; // Assuming you have this component
 
 // Platform options
-const PLATFORMS = ['Firekirin', 'Milkyway', 'Yolo'];
+const PLATFORMS = ['Firekirin', 'GameVault', 'Juwa','Game Room','OrionStar','PandaMaster','CashMachine','Noble','UltraPanda','Vegasweeps','Mafia', 'Milkyway', 'Yolo'];
 
 const PaymentForm = () => {
   const [formData, setFormData] = useState({
@@ -112,8 +112,8 @@ const PaymentForm = () => {
               className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
             >
               <option value="USD">USD</option>
-              <option value="EUR">EUR</option>
-              <option value="BTC">BTC</option>
+             { /*<option value="EUR">EUR</option> */}
+              {/*<option value="BTC">BTC</option>*/}
             </select>
           </div>
           
