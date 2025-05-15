@@ -1,11 +1,11 @@
 import { useState, useCallback } from 'react';
 import * as btcpayService from '../../services/btcpayService';
-import { BitcoinIcon, LightningIcon } from './Icons.jsx'; // Assuming you have this component
+import { BitcoinIcon, LightningIcon } from './Icons.jsx';
 
 // Platform options
 const PLATFORMS = ['Firekirin', 'GameVault', 'Juwa','Game Room','OrionStar','PandaMaster','CashMachine','Noble','UltraPanda','Vegasweeps','Mafia', 'Milkyway', 'Yolo'];
 
-const PaymentForm = () => {
+const PaymentForm = ({ merchant = null }) => {
   const [formData, setFormData] = useState({
     amount: '',
     currency: 'USD',
@@ -41,7 +41,8 @@ const PaymentForm = () => {
         productId: formData.productId,
         title: formData.title,
         customerEmail: formData.customerEmail || undefined,
-        description: formData.description || undefined
+        description: formData.description || undefined,
+        merchant: merchant // Simply pass the merchant identifier
       };
       
       // Use the service to create the invoice
@@ -76,6 +77,14 @@ const PaymentForm = () => {
         <span className="mx-2 text-gray-400">|</span>
         <LightningIcon size={24} className="text-blue-400 mr-2" />
         <h2 className="text-2xl font-bold text-blue-400 inline">Payment</h2>
+        {merchant && (
+          <>
+            <span className="mx-2 text-gray-400">|</span>
+            <h2 className="text-xl font-bold text-gray-200 inline">
+              {merchant.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase())}
+            </h2>
+          </>
+        )}
       </div>
       
       {!paymentInfo ? (
